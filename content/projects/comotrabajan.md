@@ -5,6 +5,7 @@ description: A platform that brings transparency to how companies operate, helpi
 tags: [Marketplace, Transparency, Culture, HR Tech]
 github: null
 live: https://comotrabajan.com
+image: true
 featured: true
 order: 5
 ---

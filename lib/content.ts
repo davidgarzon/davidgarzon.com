@@ -12,6 +12,7 @@ export interface Project {
   tags: string[]
   github: string | null
   live: string | null
+  image: boolean
   featured: boolean
   order: number
   content: string
@@ -33,6 +34,7 @@ export function getProjects(): Project[] {
         tags: data.tags || [],
         github: data.github || null,
         live: data.live || null,
+        image: data.image === true,
         featured: data.featured || false,
         order: data.order || 99,
         content,
@@ -54,6 +56,7 @@ export function getProjectBySlug(slug: string): Project | null {
     tags: data.tags || [],
     github: data.github || null,
     live: data.live || null,
+    image: data.image === true,
     featured: data.featured || false,
     order: data.order || 99,
     content,

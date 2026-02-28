@@ -10,6 +10,18 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   const projects = getProjects()
+  const liveProducts = projects.filter((p) => p.image).sort((a, b) => a.order - b.order)
+  const systemsAndConcepts = projects.filter((p) => !p.image).sort((a, b) => a.order - b.order)
+
+  const mapProject = (p: (typeof projects)[0]) => ({
+    slug: p.slug,
+    title: p.title,
+    description: p.description,
+    tags: p.tags,
+    github: p.github,
+    live: p.live,
+    image: p.image,
+  })
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-28 lg:px-8">
@@ -21,14 +33,8 @@ export default function WorkPage() {
       </div>
 
       <WorkGrid
-        projects={projects.map((p) => ({
-          slug: p.slug,
-          title: p.title,
-          description: p.description,
-          tags: p.tags,
-          github: p.github,
-          live: p.live,
-        }))}
+        liveProducts={liveProducts.map(mapProject)}
+        systemsAndConcepts={systemsAndConcepts.map(mapProject)}
       />
     </div>
   )

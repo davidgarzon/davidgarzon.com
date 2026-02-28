@@ -5,6 +5,7 @@ description: An AI-native platform designed to augment decision-making and knowl
 tags: [AI Platform, Knowledge Management, SaaS, Decision Support]
 github: null
 live: https://ateneai.com
+image: true
 featured: true
 order: 4
 ---

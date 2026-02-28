@@ -5,8 +5,9 @@ description: A structured system for managing product experiments, tracking hypo
 tags: [Experimentation, Product Analytics, CRM, Data]
 github: https://github.com/davidgarzon
 live: null
+image: false
 featured: true
-order: 2
+order: 6
 ---
 
 ## Overview

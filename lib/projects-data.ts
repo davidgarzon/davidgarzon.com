@@ -14,8 +14,8 @@ export const projects: ProjectInfo[] = [
     description:
       'An AI-powered system that transforms product requirements into structured decision frameworks, enabling faster and more consistent product decisions.',
     tags: ['AI', 'Decision Systems', 'Product Management', 'LLM'],
-    github: 'https://github.com/davidgarzon',
-    live: null,
+    github: null,
+    live: 'https://prd-decision-engine.davidgarzon.com',
   },
   {
     slug: 'experiment-crm',

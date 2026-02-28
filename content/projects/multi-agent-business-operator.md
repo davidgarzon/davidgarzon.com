@@ -5,8 +5,9 @@ description: An autonomous multi-agent system that orchestrates business operati
 tags: [Multi-Agent, AI Orchestration, Automation, Business Operations]
 github: https://github.com/davidgarzon
 live: null
+image: false
 featured: true
-order: 3
+order: 7
 ---
 
 ## Overview
