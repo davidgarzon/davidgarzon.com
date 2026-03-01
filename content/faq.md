@@ -27,3 +27,6 @@ Metrics should be tied to outcomes, not vanity. I focus on a small set of leadin
 ## What tools do you use?
 
 I use a mix of tools for product, analytics, and collaboration: Notion/Confluence for docs, Linear/Jira for roadmap and execution, analytics platforms for experimentation, and LLMs for drafting, synthesis, and decision support. The exact stack depends on the team; I care more about discipline than any single tool.
+
+## How many direct reports have you led?
+Up to 15 direct reports. Total org footprint: ~96 people.

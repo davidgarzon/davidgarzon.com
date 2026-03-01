@@ -70,7 +70,7 @@ export function getContentFile(name: string): string {
 }
 
 export function getAllContent(): string {
-  const files = ['bio', 'principles', 'roles', 'faq']
+  const files = ['bio', 'principles', 'roles', 'faq', 'agent']
   let allContent = ''
   for (const file of files) {
     const content = getContentFile(file)

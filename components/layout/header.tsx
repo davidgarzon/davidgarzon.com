@@ -10,9 +10,9 @@ import { useState } from 'react'
 
 const navItems = [
   { href: '/', label: 'Home' },
+  { href: '/experience', label: 'Experience' },
   { href: '/work', label: 'Work' },
-  { href: '/skills', label: 'Skills' },
-  { href: '/about', label: 'About' },
+  { href: '/advisory', label: 'Advisory' },
   { href: '/agent', label: 'Agent', ping: true },
 ]
 
@@ -22,9 +22,9 @@ export function Header() {
 
   return (
     <nav className="fixed top-0 inset-x-0 z-50 bg-white/70 backdrop-blur-xl border-b border-gray-100/50">
-      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center mr-4 transition-opacity hover:opacity-80" aria-label="Home">
-          <Image src="/logo.png" alt="David Garzón" width={100} height={54} className="h-10 md:h-11 w-auto" priority />
+      <div className="max-w-[1200px] mx-auto px-6 h-20 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80" aria-label="Home">
+          <Image src="/logo.png" alt="David Garzón" width={120} height={65} className="h-11 md:h-12 w-auto" priority />
         </Link>
 
         <div className="hidden md:flex items-center space-x-8">

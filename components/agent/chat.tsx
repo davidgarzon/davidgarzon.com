@@ -29,7 +29,9 @@ export function Chat() {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (messages.length > 0 || loading) {
+      scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
   }, [messages, loading])
 
   async function handleSubmit(question: string) {
@@ -64,15 +66,11 @@ export function Chat() {
   }
 
   return (
-    <div className="flex h-[calc(100vh-8rem)] flex-col">
+    <div className="flex h-full min-h-[400px] flex-col">
       <ScrollArea className="flex-1 pr-4">
-        <div className="mx-auto max-w-3xl space-y-6 py-8">
+        <div className="mx-auto max-w-3xl space-y-6 pt-4 pb-8">
           {messages.length === 0 && (
-            <div className="py-20 text-center">
-              <h2 className="mb-2 text-2xl font-bold">Ask me anything</h2>
-              <p className="mb-8 text-sm text-gray-500">
-                I&apos;m David&apos;s AI agent, trained on his work, experience, and product philosophy.
-              </p>
+            <div className="pt-2 pb-10 text-center">
               <div className="flex flex-wrap justify-center gap-2">
                 {suggestedQuestions.map((q) => (
                   <button

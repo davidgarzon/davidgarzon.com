@@ -1,58 +1,73 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, MessageSquare } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { trackEvent, ANALYTICS_EVENTS } from '@/lib/analytics'
 
 export function Hero() {
   return (
-    <section className="pt-28 pb-28 md:pt-36 md:pb-40 px-6 overflow-hidden">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto text-center"
-      >
-        <div className="inline-flex items-center space-x-2 mb-10 border border-gray-200/60 bg-white/50 backdrop-blur-sm rounded-full px-4 py-1.5 shadow-sm">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-gray-500" />
-          </span>
-          <span className="text-xs font-medium tracking-wider text-gray-500 uppercase">
-            VP Product · Head of Product · Product Leader
-          </span>
-        </div>
+    <section className="pt-28 pb-20 md:pt-36 md:pb-24 px-6 overflow-hidden">
+      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-16">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl"
+        >
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-4 leading-[1.1]">
+            AI-Native Product & Technology Executive
+          </h1>
+          <p className="text-lg lg:text-xl text-gray-600 leading-relaxed mb-3">
+            I turn product, technology and AI into scalable operating systems that drive real business leverage.
+          </p>
+          <p className="text-xs font-medium tracking-wider text-gray-500 uppercase mb-1">
+            Founder mindset. Executive discipline. Systems thinking.
+          </p>
+          <p className="text-[11px] text-gray-400 mb-8">
+            Built at scale. Rebuilt when necessary.
+          </p>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-6">
+            <Link
+              href="mailto:hello@davidgarzon.com"
+              onClick={() => trackEvent(ANALYTICS_EVENTS.EXPLORE_WORK_CLICKED)}
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-gray-900 text-white text-base font-medium hover:bg-gray-800 transition-colors duration-200"
+            >
+              Start a conversation
+            </Link>
+            <Link
+              href="/experience"
+              onClick={() => trackEvent(ANALYTICS_EVENTS.EXPLORE_WORK_CLICKED)}
+              className="inline-flex items-center text-gray-600 text-base font-medium hover:text-gray-900 transition-colors group"
+            >
+              View Executive Experience
+              <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" strokeWidth={1.5} />
+            </Link>
+          </div>
+          <p className="text-sm text-gray-400">
+            50M+ users · 17 countries · 96-person org footprint · {'<4%'} churn · +60% efficiency
+          </p>
+        </motion.div>
 
-        <h1 className="text-6xl md:text-8xl font-medium tracking-tight text-gray-900 mb-8 leading-[1.05]">
-          AI-Native Product Builder
-        </h1>
-
-        <p className="text-lg md:text-xl text-gray-500 leading-relaxed mb-12 max-w-2xl mx-auto">
-          I design decision systems and AI-native products where intelligence
-          drives execution and measurable impact.
-          <span className="block mt-2 text-gray-400">Barcelona</span>
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <Link
-            href="/work"
-            onClick={() => trackEvent(ANALYTICS_EVENTS.EXPLORE_WORK_CLICKED)}
-            className="inline-flex items-center text-gray-900 text-base font-medium border-b-2 border-gray-900 pb-0.5 hover:border-gray-500 transition-colors"
-          >
-            Explore Work
-            <ArrowRight className="w-4 h-4 ml-1.5" strokeWidth={1.5} />
-          </Link>
-          <Link
-            href="/agent"
-            onClick={() => trackEvent(ANALYTICS_EVENTS.ASK_AGENT_CLICKED)}
-            className="inline-flex items-center text-gray-600 text-base font-medium border-b border-gray-300 pb-0.5 hover:text-gray-900 hover:border-gray-500 transition-colors group"
-          >
-            <MessageSquare className="w-4 h-4 mr-1.5 text-gray-400 group-hover:text-gray-600 transition-colors" strokeWidth={1.5} />
-            Ask the Agent
-          </Link>
-        </div>
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="relative shrink-0 w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 mx-auto lg:mx-0"
+        >
+          <div className="absolute inset-0 rounded-full overflow-hidden ring-2 ring-gray-100 ring-offset-4 ring-offset-white shadow-lg">
+            <Image
+              src="/portrait.png"
+              alt="David Garzón"
+              fill
+              sizes="(max-width: 768px) 256px, 288px"
+              className="object-cover object-[center_10%]"
+              priority
+            />
+          </div>
+        </motion.div>
+      </div>
     </section>
   )
 }
