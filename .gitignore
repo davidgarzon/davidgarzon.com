@@ -34,6 +34,10 @@ yarn-error.log*
 .env*.local
 .env
 
+# private agent content (do not commit)
+content/agent.md
+content/faq.md
+
 # vercel
 .vercel
 

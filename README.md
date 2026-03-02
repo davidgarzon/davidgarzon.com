@@ -43,6 +43,22 @@ Create a `.env.local` file with:
 
 The site works fully without any environment variables. Analytics and the AI agent degrade gracefully when keys are not set.
 
+## Private agent context (ENV)
+
+To keep the agent’s private context out of a public repo, you can load it from environment variables instead of `content/` files:
+
+1. **In Vercel:** set `AGENT_CONTEXT` and optionally `AGENT_FAQ` (long text). Set `AGENT_CONTEXT_MODE` to `env` to use only env, or `auto` (default) to use env when set and fall back to files otherwise.
+2. **Do not commit private content:** remove or avoid committing `content/agent.md` and `content/faq.md` if they contain sensitive data (e.g. add them to `.gitignore` or move their content into Vercel env).
+3. **Local dev:** if env vars are not set, `AGENT_CONTEXT_MODE=auto` will still read `content/agent.md` and `content/faq.md` from disk when present.
+
+| Variable | Description |
+|----------|-------------|
+| `AGENT_CONTEXT_MODE` | `auto` (default), `env`, or `files` |
+| `AGENT_CONTEXT` | Full agent context text (replaces `content/agent.md` when used) |
+| `AGENT_FAQ` | FAQ text (replaces `content/faq.md` when used, optional) |
+
+**To stop shipping private context in git:** delete or move `content/agent.md` and `content/faq.md` (or add them to `.gitignore`), then set the same content in Vercel as `AGENT_CONTEXT` and `AGENT_FAQ`. Public files `bio.md`, `principles.md`, `roles.md` and `content/projects/*.md` stay in the repo.
+
 ## Project Structure
 
 ```

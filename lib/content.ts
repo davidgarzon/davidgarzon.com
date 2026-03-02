@@ -69,18 +69,49 @@ export function getContentFile(name: string): string {
   return fs.readFileSync(fullPath, 'utf8')
 }
 
+const AGENT_CONTEXT_MODE = (process.env.AGENT_CONTEXT_MODE || 'auto') as 'auto' | 'env' | 'files'
+
+function getFaqContent(): string {
+  if (AGENT_CONTEXT_MODE === 'files') return getContentFile('faq')
+  if (AGENT_CONTEXT_MODE === 'env') return (process.env.AGENT_FAQ || '').trim()
+  // auto: prefer env
+  const fromEnv = (process.env.AGENT_FAQ || '').trim()
+  if (fromEnv) return fromEnv
+  return getContentFile('faq')
+}
+
+function getAgentContextContent(): string {
+  if (AGENT_CONTEXT_MODE === 'files') return getContentFile('agent')
+  if (AGENT_CONTEXT_MODE === 'env') return (process.env.AGENT_CONTEXT || '').trim()
+  // auto: prefer env
+  const fromEnv = (process.env.AGENT_CONTEXT || '').trim()
+  if (fromEnv) return fromEnv
+  return getContentFile('agent')
+}
+
 export function getAllContent(): string {
-  const files = ['bio', 'principles', 'roles', 'faq', 'agent']
-  let allContent = ''
-  for (const file of files) {
-    const content = getContentFile(file)
-    if (content) {
-      allContent += `\n\n--- ${file.toUpperCase()} ---\n\n${content}`
-    }
+  const parts: string[] = []
+
+  // Public files (always from disk when present)
+  const publicFiles = ['bio', 'principles', 'roles'] as const
+  for (const name of publicFiles) {
+    const content = getContentFile(name)
+    if (content) parts.push(`--- ${name.toUpperCase()} ---\n\n${content}`)
   }
+
+  // FAQ: from env or file depending on mode
+  const faqContent = getFaqContent()
+  if (faqContent) parts.push(`--- FAQ ---\n\n${faqContent}`)
+
+  // Agent context: from env or file depending on mode
+  const agentContent = getAgentContextContent()
+  if (agentContent) parts.push(`--- AGENT ---\n\n${agentContent}`)
+
+  // Projects (always from disk)
   const projects = getProjects()
   for (const project of projects) {
-    allContent += `\n\n--- PROJECT: ${project.title} ---\n\n${project.description}\n\n${project.content}`
+    parts.push(`--- PROJECT: ${project.title} ---\n\n${project.description}\n\n${project.content}`)
   }
-  return allContent
+
+  return parts.join('\n\n')
 }
