@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 import { getAllContent } from '@/lib/content'
 import { chunkText, simpleSearch } from '@/lib/rag'
-import { checkRateLimit } from '@/lib/rate-limit'
+import { checkRateLimit, checkDailyLimit } from '@/lib/rate-limit'
 
 const SYSTEM_PROMPT = `You are David Garzon's personal AI agent on his website davidgarzon.com.
 You answer questions about David's work, experience, product philosophy, professional background, and how to collaborate with him (roles, advisory, speaking, mentoring).
@@ -18,6 +18,9 @@ Hard rules (do not break these):
 - Do not invent accomplishments. If asked for metrics or scale and they are not in context, say you don't know.
 - If asked about layoffs/firing/terminations, do NOT discuss private cases; answer only at a leadership-principle level.
 - Refuse inappropriate personal questions politely.
+
+FORMATTING
+Use Markdown: put a newline before each bullet so lists render with line breaks. Use ** for bold when needed.
 
 PERSONALITY FRAMEWORK
 1. Structured Thinking
@@ -116,11 +119,33 @@ async function getChunks() {
 
 export async function POST(request: NextRequest) {
   try {
-    const ip = request.headers.get('x-forwarded-for') || 'anonymous'
-    const { allowed } = checkRateLimit(ip)
+    // Client identification
+    // Prefer CDN/proxy headers when present; fall back to x-forwarded-for; then to 'anonymous'.
+    const rawXff = request.headers.get('x-forwarded-for')
+    const xffFirst = rawXff ? rawXff.split(',')[0].trim() : null
+    const ip =
+      request.headers.get('cf-connecting-ip') ||
+      request.headers.get('x-real-ip') ||
+      xffFirst ||
+      'anonymous'
+
+    // Add a light “fingerprint” so shared IPs (office/VPN) don’t fully collide.
+    const ua = request.headers.get('user-agent') || 'unknown'
+    const clientId = `${ip}::${ua.slice(0, 80)}`
+
+    // Rate limits: burst (per-minute) + daily cap to protect token spend.
+    const { allowed } = checkRateLimit(clientId)
     if (!allowed) {
       return NextResponse.json(
         { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      )
+    }
+
+    const daily = checkDailyLimit(clientId)
+    if (!daily.allowed) {
+      return NextResponse.json(
+        { error: 'Daily usage limit reached. Please try again tomorrow.' },
         { status: 429 }
       )
     }
@@ -138,7 +163,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           message:
-            'The AI agent is not configured yet. Please set the OPENAI_API_KEY environment variable to enable this feature. In the meantime, feel free to explore the rest of the site!',
+            "The AI agent isn't configured yet. Please set OPENAI_API_KEY to enable it.",
         },
         { status: 200 }
       )
@@ -147,6 +172,21 @@ export async function POST(request: NextRequest) {
     const lastUserMessage = [...messages]
       .reverse()
       .find((m: { role: string }) => m.role === 'user')
+
+    // Hard caps to avoid abuse (token spend / prompt injection surface)
+    const MAX_USER_CHARS = 2400
+    if (typeof lastUserMessage?.content !== 'string') {
+      return NextResponse.json({ error: 'Invalid user message.' }, { status: 400 })
+    }
+    if (lastUserMessage.content.length > MAX_USER_CHARS) {
+      return NextResponse.json(
+        {
+          error: `Message too long. Please keep it under ${MAX_USER_CHARS} characters.`,
+        },
+        { status: 413 }
+      )
+    }
+
     if (!lastUserMessage) {
       return NextResponse.json(
         { error: 'No user message found.' },
@@ -160,22 +200,32 @@ export async function POST(request: NextRequest) {
 
     const openai = new OpenAI({ apiKey })
 
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o-mini', // keep lightweight model; prompt+params enforce format
-      messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        {
-          role: 'system',
-          content: `Here is the relevant context from David's knowledge base:\n\n${context}`,
-        },
-        ...messages.slice(-6).map((m: { role: string; content: string }) => ({
-          role: m.role as 'user' | 'assistant',
-          content: m.content,
-        })),
-      ],
-      max_tokens: 420,
-      temperature: 0.2,
-    })
+    // Keep spend predictable: small model + low temperature + capped output.
+    // NOTE: If you later move to Responses API, keep the same caps.
+    const response = await openai.chat.completions.create(
+      {
+        model: 'gpt-4o-mini',
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          {
+            role: 'system',
+            content: `Here is the relevant context from David's knowledge base:\n\n${context}`,
+          },
+          ...messages
+            .slice(-6)
+            .map((m: { role: string; content: string }) => ({
+              role: m.role as 'user' | 'assistant',
+              content: m.content,
+            })),
+        ],
+        max_tokens: 380,
+        temperature: 0.2,
+      },
+      {
+        // Prevent hung requests from chewing compute.
+        timeout: 12_000,
+      }
+    )
 
     const message =
       response.choices[0]?.message?.content ||

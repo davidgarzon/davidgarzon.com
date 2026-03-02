@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import ReactMarkdown from 'react-markdown'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -106,9 +107,13 @@ export function Chat() {
                   msg.role === 'user'
                     ? 'bg-gray-900 text-white'
                     : 'border border-gray-200 bg-gray-50/80'
-                }`}
+                } ${msg.role === 'assistant' ? '[&_ul]:my-2 [&_ul]:list-disc [&_ul]:pl-5 [&_li]:my-0.5 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_strong]:font-semibold' : ''}`}
               >
-                {msg.content}
+                {msg.role === 'assistant' ? (
+                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+                ) : (
+                  msg.content
+                )}
               </div>
               {msg.role === 'user' && (
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-gray-900 bg-gray-900">
