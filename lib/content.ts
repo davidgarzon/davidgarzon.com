@@ -69,24 +69,24 @@ export function getContentFile(name: string): string {
   return fs.readFileSync(fullPath, 'utf8')
 }
 
-const AGENT_CONTEXT_MODE = (process.env.AGENT_CONTEXT_MODE || 'auto') as 'auto' | 'env' | 'files'
+const AGENT_CONTEXT_MODE = (process.env.AGENT_CONTEXT_MODE || 'env') as 'auto' | 'env' | 'files'
 
 function getFaqContent(): string {
-  if (AGENT_CONTEXT_MODE === 'files') return getContentFile('faq')
-  if (AGENT_CONTEXT_MODE === 'env') return (process.env.AGENT_FAQ || '').trim()
-  // auto: prefer env
-  const fromEnv = (process.env.AGENT_FAQ || '').trim()
-  if (fromEnv) return fromEnv
-  return getContentFile('faq')
+  if (AGENT_CONTEXT_MODE === 'files') {
+    return getContentFile('faq')
+  }
+
+  // Default behavior: ENV only
+  return (process.env.AGENT_FAQ || '').trim()
 }
 
 function getAgentContextContent(): string {
-  if (AGENT_CONTEXT_MODE === 'files') return getContentFile('agent')
-  if (AGENT_CONTEXT_MODE === 'env') return (process.env.AGENT_CONTEXT || '').trim()
-  // auto: prefer env
-  const fromEnv = (process.env.AGENT_CONTEXT || '').trim()
-  if (fromEnv) return fromEnv
-  return getContentFile('agent')
+  if (AGENT_CONTEXT_MODE === 'files') {
+    return getContentFile('agent')
+  }
+
+  // Default behavior: ENV only
+  return (process.env.AGENT_CONTEXT || '').trim()
 }
 
 export function getAllContent(): string {
