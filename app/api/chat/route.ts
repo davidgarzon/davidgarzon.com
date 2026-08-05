@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
-import { getAllContent } from '@/lib/content'
+import { getAllContent, getContentFile } from '@/lib/content'
 import { chunkText, simpleSearch } from '@/lib/rag'
 import { checkRateLimit, checkDailyLimit } from '@/lib/rate-limit'
 
@@ -108,6 +108,18 @@ Rules:
 - Keep most answers under ~160 words unless the user explicitly asks for more detail.
 `
 
+// The canonical role/metric facts are small and authoritative. They must ALWAYS
+// reach the model, never be subject to lossy top-K keyword retrieval (in
+// production the AGENT_CONTEXT/AGENT_FAQ env blobs enlarge the chunk pool and
+// can push a specific role's chunk out of the top results). Load once, inject in full.
+let cachedCanonicalFacts: string | null = null
+function getCanonicalFacts(): string {
+  if (cachedCanonicalFacts === null) {
+    cachedCanonicalFacts = getContentFile('experience').trim()
+  }
+  return cachedCanonicalFacts
+}
+
 let cachedChunks: { text: string; source: string }[] | null = null
 let cachedChunksPromise: Promise<{ text: string; source: string }[]> | null = null
 
@@ -204,6 +216,7 @@ export async function POST(request: NextRequest) {
     const chunks = await getChunks()
     const relevant = simpleSearch(lastUserMessage.content, chunks, 8)
     const context = relevant.map((c) => c.text).join('\n\n---\n\n')
+    const canonicalFacts = getCanonicalFacts()
 
     const openai = new OpenAI({ apiKey })
 
@@ -214,9 +227,17 @@ export async function POST(request: NextRequest) {
         model: 'gpt-4o-mini',
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
+          ...(canonicalFacts
+            ? [
+                {
+                  role: 'system' as const,
+                  content: `CANONICAL FACTS (authoritative source of truth about David's roles, dates, locations and metrics — always trust these and answer directly from them):\n\n${canonicalFacts}`,
+                },
+              ]
+            : []),
           {
             role: 'system',
-            content: `Here is the relevant context from David's knowledge base:\n\n${context}`,
+            content: `Here is additional relevant context from David's knowledge base:\n\n${context}`,
           },
           ...messages
             .slice(-6)
