@@ -48,9 +48,10 @@ const roles = [
     company: 'Domestika',
     location: 'Barcelona',
     timeframe: '2022 – 2023',
-    description: 'Global creative learning platform.',
+    description: "One of Spain's leading unicorns and a global creative learning platform.",
     bullets: [
       'Led an organisation of 90 people across Product, Design, Data, SEO and ASO, with 52 in product and 8 direct reports.',
+      'Delivered +20% growth above plan through product-led initiatives.',
       'Launched the subscription model, reaching 40% adoption, +50% LTV, retention to 16 months and NPS 78+.',
       'Used AI dubbing and transcription to open 3 new markets on under $60k.',
       'Reduced employee turnover by 23% through org redesign.',

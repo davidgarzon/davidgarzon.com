@@ -36,8 +36,10 @@ title or location that is not written here.
 
 - Dates: 2022 to 2023
 - Location: Barcelona
+- One of Spain's leading unicorns and a global creative learning platform.
 - Led an organisation of 90 people across Product, Design, Data, SEO and ASO,
   with 52 in product and 8 direct reports.
+- Delivered +20% growth above plan through product-led initiatives.
 - Subscription launch reached 40% adoption, +50% LTV, retention to 16 months and
   NPS 78+.
 - AI dubbing and transcription opened 3 new markets on under 60,000 dollars.
