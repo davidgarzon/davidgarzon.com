@@ -1,9 +1,11 @@
-# David Garzon
+# About Me
 
-David Garzon is an AI-native product builder based in Barcelona, with a founder mindset and a systems-thinking approach to building products. He has held VP Product and Head of Product roles at companies where he has shaped product strategy, built high-performing teams, and shipped products that create lasting impact. He now runs Kenva Labs (kenvalabs.com), his independent product and AI practice.
+I am a product and technology leader based in Barcelona, with 20+ years building and scaling SaaS, marketplaces and AI-driven platforms across Europe, the US and LATAM.
 
-His focus is on decision systems, AI-native products, and orchestration—building products where intelligence drives execution and measurable impact. He believes the best product leaders operate at the intersection of strategy, execution, and continuous learning, with a bias toward clarity and measurability.
+I started as a developer and I never stopped building. That shapes how I lead: I can sit in an architecture conversation and make trade-off calls rather than translate them, and I still write code on my own products.
 
-David brings the rigour of a systems thinker and the speed of a builder. He is drawn to complex problems that benefit from structure: turning ambiguity into frameworks, hypotheses into experiments, and ideas into shipped products. He works well in environments where product decisions are central to company success and where teams value both velocity and thoughtful design.
+Right now I run Kenva Labs, an independent product and AI practice. Before that I was VP of AI Product & Engineering at Plinng, where I scaled product and engineering from 7 to 42 people and shipped a multi-agent customer service system into production. I led product and data at Domestika, one of Spain's leading unicorns, where I moved the business from one-time purchases to subscription and took retention to 16 months. And I owned product across 17 countries at The Knot Worldwide.
 
-When he's not building products, you'll find him exploring how AI can augment human decision-making, writing about product and systems thinking, or enjoying Barcelona's blend of tech, culture, and Mediterranean pace.
+I have founded four companies, including GoTrendier, a second-hand fashion marketplace in Mexico and Colombia that reached 15M+ transactions, and Fanscup, one of Europe's first vertical social networks, which grew to 50M users across 17 countries.
+
+The thread through all of it: my goal is not to get a user to show up. It is to get them to come back.
