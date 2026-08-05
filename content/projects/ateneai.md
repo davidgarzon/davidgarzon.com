@@ -1,8 +1,8 @@
 ---
 title: AteneAI
 slug: ateneai
-description: An AI-native platform designed to augment decision-making and knowledge management for teams.
-tags: [AI Platform, Knowledge Management, SaaS, Decision Support]
+description: An AI-native GEO platform that helps brands measure and shape how they surface in LLM-powered search.
+tags: [GEO, AEO, AI Search, Brand Visibility]
 github: null
 live: https://ateneai.com
 image: true
@@ -12,18 +12,18 @@ order: 4
 
 ## Overview
 
-Teams hold enormous amounts of knowledge in documents, conversations, and institutional memory, but accessing and applying that knowledge at the moment of decision is hard. AteneAI is an AI-native platform that sits at the intersection of knowledge management and decision support. It helps teams capture, organise, and retrieve context so that when a decision needs to be made, the relevant information is at hand—augmented by AI that can synthesise, summarise, and suggest connections.
+Search is moving inside the model. People increasingly ask ChatGPT, Gemini, Perplexity and similar assistants instead of typing into a traditional search box, and the answers those systems generate now shape what brands look like to their market. AteneAI is an AI-native GEO platform (Generative Engine Optimization). It helps brands measure and shape how they surface in LLM-powered search: which questions mention them, how they are described, where they are missing, and how that changes over time.
 
-The platform is built on the premise that decisions improve when context is available and structured. Instead of treating knowledge as a static repository, AteneAI treats it as a living resource that feeds into workflows. The AI components help teams navigate complexity by surfacing what matters, highlighting gaps, and suggesting how past decisions might inform the current one.
+The platform treats generative engines as a new distribution channel with its own mechanics. Instead of guessing how a brand appears inside an assistant's answer, AteneAI makes it observable and steerable, so teams can act on it the same way they act on classic search visibility.
 
 ## What I Built
 
-I built AteneAI as a SaaS platform with a knowledge layer (ingestion, indexing, linking) and a decision-support layer (context assembly, synthesis, recommendations). The system ingests from multiple sources—documents, wikis, chat, emails—and builds a unified representation that supports semantic search and reasoning. The AI layer can answer questions, generate summaries, and propose decision frameworks based on stored knowledge.
+I built AteneAI to answer a concrete question for every brand: when someone asks an AI assistant about our category, what does the model say, and are we in the answer? The system runs representative prompts across the major engines (ChatGPT, Gemini, Perplexity and others), captures how each brand is mentioned, ranked and framed, and turns that into visibility and share-of-voice metrics tracked over time.
 
-The product prioritises ease of use: teams can onboard quickly, connect their existing tools, and see value without extensive configuration. The architecture supports both synchronous use (asking a question and getting an answer) and asynchronous use (receiving context bundles before meetings or decisions). I designed it to work alongside human judgment—augmenting, not replacing—with clear attribution and the ability to trace recommendations back to source material.
+On top of measurement sits the shaping layer. AteneAI identifies the gaps (questions where a brand should appear but does not, descriptions that are wrong or thin, competitors that own the answer) and recommends the content and structure changes that move how models represent the brand. It covers both GEO for generative engines and AEO for answer engines, so a team can manage AI search visibility from one place rather than treating each assistant as a separate mystery.
 
 ## Why It Matters
 
-Knowledge work is bottlenecked by context switching and information overload. Teams spend time hunting for the right document, re-explaining past decisions, and reinventing approaches that already exist somewhere in the organisation. AteneAI addresses that by making knowledge actively useful at decision points. It turns "we have this somewhere" into "here's what you need, now."
+For a growing share of buyers, the first impression of a brand is now an AI-generated answer, not a website or a ranked list of links. If a model does not know a brand, describes it poorly, or hands the category to a competitor, that happens invisibly and at scale. Traditional SEO tools do not see it, because the surface is a generated response, not a search results page.
 
-For organisations scaling teams or operating across time zones, having a shared knowledge layer that AI can navigate reduces coordination cost and improves decision quality. The platform also embodies an AI-native approach: AI isn't a bolt-on feature but the core mechanism for making knowledge actionable. That's the difference between a search engine and a decision-support system.
+AteneAI closes that blind spot. It gives brands a way to measure their presence inside AI search, understand why they show up the way they do, and deliberately improve it. As generative engines become a primary way people discover and evaluate products, that visibility is a channel worth owning, and AteneAI is built to own it.

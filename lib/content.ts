@@ -93,7 +93,7 @@ export function getAllContent(): string {
   const parts: string[] = []
 
   // Public files (always from disk when present)
-  const publicFiles = ['bio', 'principles', 'roles'] as const
+  const publicFiles = ['bio', 'experience', 'principles', 'roles'] as const
   for (const name of publicFiles) {
     const content = getContentFile(name)
     if (content) parts.push(`--- ${name.toUpperCase()} ---\n\n${content}`)
