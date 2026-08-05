@@ -9,14 +9,14 @@ const clusters = [
     metrics: [
       { value: '50M+', label: 'users' },
       { value: '17', label: 'countries' },
-      { value: '96-person', label: 'organization footprint' },
-      { value: '15', label: 'direct reports' },
+      { value: '90-person', label: 'organization footprint' },
+      { value: '8', label: 'direct reports' },
     ],
   },
   {
     heading: 'Performance',
     metrics: [
-      { value: '+60%', label: 'operational efficiency' },
+      { value: '75-78%', label: 'AI automation in production' },
       { value: '<4%', label: 'churn' },
       { value: '+50%', label: 'LTV' },
       { value: '+20%', label: 'growth above plan' },
@@ -25,7 +25,7 @@ const clusters = [
   {
     heading: 'Execution',
     metrics: [
-      { value: '10 → 42', label: 'team scale in under 2 years' },
+      { value: '7 → 42', label: 'team scale in under 2 years' },
       { value: '$6M', label: 'revenue pivot in 6 months' },
       { value: '120%', label: 'growth target achieved' },
       { value: '40%', label: 'subscription adoption' },

@@ -8,11 +8,13 @@ import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
-const navItems = [
+type NavItem = { href: string; label: string; ping?: boolean; external?: boolean }
+
+const navItems: NavItem[] = [
   { href: '/', label: 'Home' },
   { href: '/experience', label: 'Experience' },
   { href: '/work', label: 'Work' },
-  { href: '/advisory', label: 'Advisory' },
+  { href: 'https://kenvalabs.com', label: 'Kenva Labs', external: true },
   { href: '/agent', label: 'Agent', ping: true },
 ]
 
@@ -32,9 +34,10 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
+              {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               className={cn(
                 'text-base font-medium transition-colors flex items-center gap-1.5',
-                pathname === item.href
+                !item.external && pathname === item.href
                   ? 'text-gray-900'
                   : 'text-gray-500 hover:text-gray-900'
               )}
@@ -71,10 +74,11 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
+              {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               onClick={() => setMobileOpen(false)}
               className={cn(
                 'block py-3 text-base font-medium transition-colors',
-                pathname === item.href
+                !item.external && pathname === item.href
                   ? 'text-gray-900'
                   : 'text-gray-500 hover:text-gray-900'
               )}

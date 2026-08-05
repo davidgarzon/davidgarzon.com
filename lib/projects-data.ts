@@ -39,8 +39,8 @@ export const projects: ProjectInfo[] = [
     slug: 'ateneai',
     title: 'AteneAI',
     description:
-      'An AI-native platform designed to augment decision-making and knowledge management for teams.',
-    tags: ['AI Platform', 'Knowledge Management', 'SaaS', 'Decision Support'],
+      'An AI-native GEO platform that helps brands measure and shape how they surface in LLM-powered search across ChatGPT, Gemini and Perplexity.',
+    tags: ['GEO', 'AEO', 'AI Search', 'Brand Visibility'],
     github: null,
     live: 'https://ateneai.com',
   },

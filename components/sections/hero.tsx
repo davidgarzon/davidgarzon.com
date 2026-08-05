@@ -22,6 +22,18 @@ export function Hero() {
           <p className="text-lg lg:text-xl text-gray-600 leading-relaxed mb-3">
             I turn product, technology and AI into scalable operating systems that drive real business leverage.
           </p>
+          <p className="text-base text-gray-500 leading-relaxed mb-3">
+            I now run{' '}
+            <Link
+              href="https://kenvalabs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-gray-700 underline underline-offset-4 hover:text-gray-900"
+            >
+              Kenva Labs
+            </Link>
+            , my independent product and AI practice.
+          </p>
           <p className="text-xs font-medium tracking-wider text-gray-500 uppercase mb-1">
             Founder mindset. Executive discipline. Systems thinking.
           </p>
@@ -46,7 +58,7 @@ export function Hero() {
             </Link>
           </div>
           <p className="text-sm text-gray-400">
-            50M+ users · 17 countries · 96-person org footprint · {'<4%'} churn · +60% efficiency
+            50M+ users · 17 countries · 90-person org footprint · {'<4%'} churn · 75-78% AI automation in production
           </p>
         </motion.div>
 

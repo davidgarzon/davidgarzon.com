@@ -27,7 +27,7 @@ const blocks = [
     items: [
       'Product leadership mentoring',
       'AI-native product systems',
-      'Guest lecturer at ISDI (2 years)',
+      'Former Lecturer at ISDI (2 years)',
       'Executive workshops',
     ],
   },
