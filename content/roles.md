@@ -2,9 +2,9 @@
 
 ## Roles I'm Open To
 
-VP of Product · Product Director · Chief Product Officer
+VP of Product · Product Director · Chief Product Officer · CPTO / CTPO
 
-I look for these roles in mid-sized companies where AI is central to the product, not an add-on. I thrive when product strategy, team leadership and hands-on building are all part of the job.
+I look for these roles in mid-sized companies where AI is central to the product, not an add-on. I thrive when product strategy, team leadership and hands-on building are all part of the job. If I am choosing between a CPO and a CTO role I prefer CPO, but I am open to combined product and technology mandates.
 
 ## Role Level
 
