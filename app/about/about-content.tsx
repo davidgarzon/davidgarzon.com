@@ -108,10 +108,10 @@ export function AboutContent() {
           Roles I&apos;m Open To
         </h2>
         <p className="mb-8 text-gray-500">
-          VP Product · Head of Product · Product Leader
+          VP of Product · Product Director · Chief Product Officer
         </p>
         <p className="mb-12 text-lg text-gray-500">
-          AI-native or AI-forward companies where product strategy, team leadership, and hands-on building are all part of the job. Barcelona-based or remote-first.
+          Mid-sized, AI-native or AI-forward companies where product strategy, team leadership, and hands-on building are all part of the job. Barcelona hybrid, or remote across Europe.
         </p>
       </div>
 
