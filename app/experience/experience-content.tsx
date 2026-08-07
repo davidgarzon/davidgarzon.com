@@ -51,6 +51,7 @@ const roles = [
     description: "One of Spain's leading unicorns and a global creative learning platform.",
     bullets: [
       'Led an organisation of 90 people across Product, Design, Data, SEO and ASO, with 52 in product and 8 direct reports.',
+      'Managed a technology budget of €20-25M, with product performance aligned against €60-70M of paid acquisition spend that sat with marketing, not with me; my responsibility was making product performance work against it.',
       'Delivered +20% growth above plan through product-led initiatives.',
       'Launched the subscription model, reaching 40% adoption, +50% LTV, retention to 16 months and NPS 78+.',
       'Used AI dubbing and transcription to open 3 new markets on under $60k.',
@@ -65,7 +66,9 @@ const roles = [
     description: 'Global wedding technology company operating in 17 countries.',
     bullets: [
       'Led product across 17 countries with a team of 65.',
-      'Delivered +60% leads and $6M revenue in 6 months during the COVID pivot.',
+      'Called the pivot when COVID collapsed wedding leads by over 90%. Designed and shipped an ML-based chatbot built on 300+ customer interviews, with automated qualification and vendor matching. It recovered 70% of lost leads and held 85% of paying clients through the crisis.',
+      'Launched a new e-commerce product in the US that generated $6M in revenue within 6 months.',
+      'Consolidated the tech stack after acquisitions, removing duplicated systems and reorganising teams: revenue grew 60%.',
       'Built ML-based personalization across the marketplace.',
       'Drove +20% SEO revenue uplift, +50% reviews and NPS 78+.',
     ],

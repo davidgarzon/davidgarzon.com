@@ -26,7 +26,7 @@ const clusters = [
     heading: 'Execution',
     metrics: [
       { value: '7 → 42', label: 'team scale in under 2 years' },
-      { value: '$6M', label: 'revenue pivot in 6 months' },
+      { value: '$6M', label: 'US e-commerce revenue in 6 months' },
       { value: '120%', label: 'growth target achieved' },
       { value: '40%', label: 'subscription adoption' },
     ],
