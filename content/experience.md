@@ -39,6 +39,10 @@ that is not written here.
 - Domestika is one of Spain's leading unicorns and a global creative learning platform.
 - I led an organisation of 90 people across Product, Design, Data, SEO and ASO,
   with 52 in product and 8 direct reports.
+- I managed a technology budget of 20 to 25 million euros, with product
+  performance aligned against 60 to 70 million euros of paid acquisition spend.
+  That budget sat with marketing, not with me; my responsibility was making
+  product performance work against it.
 - I delivered +20% growth above plan through product-led initiatives.
 - My subscription launch reached 40% adoption, +50% LTV, retention to 16 months
   and NPS 78+.
@@ -51,7 +55,14 @@ that is not written here.
 - Location: Barcelona
 - My title was Director of Product Management.
 - I led product across 17 countries with a team of 65.
-- During the COVID pivot I delivered +60% leads and 6M dollars revenue in 6 months.
+- I called the pivot when COVID collapsed wedding leads by over 90%. I designed
+  and shipped an ML-based chatbot built on 300+ customer interviews, with
+  automated qualification and vendor matching. It recovered 70% of lost leads
+  and held 85% of paying clients through the crisis.
+- I launched a new e-commerce product in the US that generated 6 million dollars
+  in revenue within 6 months.
+- I consolidated the tech stack after acquisitions, removing duplicated systems
+  and reorganising teams: revenue grew 60%.
 - I built ML-based personalization across the marketplace.
 - I drove +20% SEO revenue uplift, +50% reviews and NPS 78+.
 

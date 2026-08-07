@@ -11,15 +11,14 @@
 
 ## The Knot Worldwide, COVID recovery
 
-When weddings stopped, leads collapsed. I designed and launched a structured chatbot
-product built from real user signal analysis, with automated qualification and
-recovery flows. It recovered 50 to 70% of lost leads depending on the country, and
-prevented a projected collapse of around 90%. It stabilised the paying customer base
-through the crisis.
+When COVID collapsed wedding leads by over 90%, I called the pivot. I designed and
+shipped an ML-based chatbot built on 300+ customer interviews, with automated
+qualification and vendor matching. It recovered 70% of lost leads and held 85% of
+paying clients through the crisis.
 
-Separately at The Knot Worldwide, I launched a new e-commerce product that generated
-6 million dollars in revenue within 6 months. These are two different projects and
-should never be described as one.
+Separately at The Knot Worldwide, I launched a new e-commerce product in the US that
+generated 6 million dollars in revenue within 6 months. These are two different
+projects and should never be described as one.
 
 ## Tech stack consolidation
 
