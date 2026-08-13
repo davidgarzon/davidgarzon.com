@@ -70,11 +70,11 @@ export function Hero() {
         >
           <div className="absolute inset-0 rounded-full overflow-hidden ring-2 ring-gray-100 ring-offset-4 ring-offset-white shadow-lg">
             <Image
-              src="/portrait.png"
+              src="/portrait.jpg"
               alt="David Garzón"
               fill
               sizes="(max-width: 768px) 256px, 288px"
-              className="object-cover object-[center_10%]"
+              className="object-cover object-center"
               priority
             />
           </div>

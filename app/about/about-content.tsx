@@ -36,7 +36,7 @@ export function AboutContent() {
       <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 md:gap-16 items-start mb-24">
         <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-gray-50 shadow-sm border border-gray-100">
           <Image
-            src="/portrait.png"
+            src="/portrait.jpg"
             alt="David Garzón"
             fill
             sizes="(max-width: 768px) 100vw, 400px"
